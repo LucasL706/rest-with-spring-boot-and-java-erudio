@@ -1,5 +1,6 @@
 package LucasL706.com.github.controllers;
 
+import LucasL706.com.github.data.dto.PersonDTO;
 import LucasL706.com.github.services.PersonServices;
 import LucasL706.com.github.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,11 @@ public class PersonController {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") Long id){
+    public PersonDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findById(){
+    public List<PersonDTO> findById(){
         return service.findAll();
     }
 
@@ -32,7 +33,7 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person create(@RequestBody Person person){
+    public PersonDTO create(@RequestBody PersonDTO person){
         return service.create(person);
     }
 
@@ -40,7 +41,7 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person update(@RequestBody Person person){
+    public PersonDTO update(@RequestBody PersonDTO person){
         return service.update(person);
     }
 
