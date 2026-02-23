@@ -3,7 +3,7 @@ package LucasL706.com.github.uniteTests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import LucasL706.com.github.data.dto.PersonDTO;
+import LucasL706.com.github.data.dto.v1.PersonDTO;
 import LucasL706.com.github.model.Person;
 
 public class MockPerson {

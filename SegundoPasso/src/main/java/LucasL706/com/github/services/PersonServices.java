@@ -1,9 +1,12 @@
 package LucasL706.com.github.services;
 
-import LucasL706.com.github.data.dto.PersonDTO;
+import LucasL706.com.github.data.dto.v1.PersonDTO;
+import LucasL706.com.github.data.dto.v2.PersonDTOV2;
 import LucasL706.com.github.exception.ResourceNotFoundException;
 import static LucasL706.com.github.mapper.ObjectMapper.parseListObjects;
 import static LucasL706.com.github.mapper.ObjectMapper.parseObject;
+
+import LucasL706.com.github.mapper.custom.PersonMapper;
 import LucasL706.com.github.model.Person;
 import LucasL706.com.github.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -11,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -25,6 +27,8 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
+    @Autowired
+    PersonMapper converter;
 
     // MOC ( Simula o acesso ao BD )
     public List<PersonDTO> findAll() {
@@ -47,6 +51,14 @@ public class PersonServices {
         var entity = parseObject(personDTO, Person.class);
 
         return parseObject(repository.save(entity), PersonDTO.class);
+    }
+
+    public PersonDTOV2 createV2(PersonDTOV2 personDTO) {
+        logger.info("Creating one person V2!");
+
+        var entity = converter.convertDTOtoEntity(personDTO);
+
+        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person) {

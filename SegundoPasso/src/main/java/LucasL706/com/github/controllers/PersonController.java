@@ -1,8 +1,8 @@
 package LucasL706.com.github.controllers;
 
-import LucasL706.com.github.data.dto.PersonDTO;
+import LucasL706.com.github.data.dto.v1.PersonDTO;
+import LucasL706.com.github.data.dto.v2.PersonDTOV2;
 import LucasL706.com.github.services.PersonServices;
-import LucasL706.com.github.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +35,15 @@ public class PersonController {
     )
     public PersonDTO create(@RequestBody PersonDTO person){
         return service.create(person);
+    }
+
+    @PostMapping(
+            value = ("/v2"),
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person){
+        return service.createV2(person);
     }
 
     @PutMapping(
