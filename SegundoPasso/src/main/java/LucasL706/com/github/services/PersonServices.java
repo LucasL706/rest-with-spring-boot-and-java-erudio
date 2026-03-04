@@ -30,7 +30,6 @@ public class PersonServices {
     @Autowired
     PersonMapper converter;
 
-    // MOC ( Simula o acesso ao BD )
     public List<PersonDTO> findAll() {
         logger.info("Finding all people!");
 

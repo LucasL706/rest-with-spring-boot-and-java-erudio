@@ -24,6 +24,7 @@ public class PersonController {
     public PersonDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<PersonDTO> findById(){
         return service.findAll();
