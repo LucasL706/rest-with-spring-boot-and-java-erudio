@@ -23,12 +23,13 @@ public class WebConfig implements WebMvcConfigurer {
                 .mediaType("xml", MediaType.APPLICATION_XML);
          */
 
-        // Via HEADER PARAM http://localhost:8080/api/person/v1/2?mediaType=xml
-        configurer.favorParameter(false)
-                .ignoreAcceptHeader(false)
+        configurer.favorParameter(true)
+                .parameterName("mediaType")
+                .ignoreAcceptHeader(true)
                 .useRegisteredExtensionsOnly(false)
                 .defaultContentType(MediaType.APPLICATION_JSON)
                 .mediaType("json", MediaType.APPLICATION_JSON)
-                .mediaType("xml", MediaType.APPLICATION_XML);
+                .mediaType("xml", MediaType.APPLICATION_XML)
+                .mediaType("yaml", MediaType.APPLICATION_YAML);
     }
 }
