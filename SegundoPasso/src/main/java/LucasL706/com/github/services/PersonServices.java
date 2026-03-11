@@ -27,7 +27,6 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    // MOC ( Simula o acesso ao BD )
     public List<PersonDTO> findAll() {
         logger.info("Finding all people!");
         
